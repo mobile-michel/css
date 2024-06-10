@@ -1,0 +1,75 @@
+backend: # Required
+  name: git-gateway
+  branch: main
+media_folder: "src/assets/img/" # Required
+public_folder: "assets/img/" # Required
+local_backend: true # Run "npx decap-server" for local backend | optional
+display_url: https://mobile-michel.github.io/13-simple-blog/
+collections: # Required
+  - name: "pages" # Required. Used in routes, e.g., /admin/collections/blog
+    label: "Pages" # Required. Used in the UI
+    files:
+      - label: "Homepage" # Used in the UI | required
+        name: "index" # Used in routes, e.g., /admin/collections/blog | required
+        file: "src/content/index.md" # The path to the file | required
+        fields: # The fields in front matter | required
+          - { label: "Title", name: "title", widget: "string" } # required
+          - { label: "Layout", name: "layout", widget: "string" }
+          - { label: "Collections", name: "tags", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Contact"
+        name: "contact"
+        file: "src/content/contact.liquid"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Layout", name: "layout", widget: "string" }
+          - { label: "Collections", name: "tags", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+  - label: "Blog"
+    name: "blog"
+    folder: "src/content/blog"
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - label: "Documentation"
+    name: "doc"
+    folder: "src/content/doc"
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "configuration" # Required. Used in routes, e.g., /admin/collections/blog
+    label: "Configuration" # Required. Used in the UI
+    files:
+      - label: "Site settings"
+        name: "settings"
+        file: "src/_data/site.json"
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Description, name: description, widget: string }
+          - { label: Author name, name: authorName, widget: string }
+          - { label: Author URL, name: authorUrl, widget: string }
+          - { label: Favicon, name: favicon, widget: string }
+      - label: "Design"
+        name: "Tokens"
+        file: "src/_data/tokens.json"
+        fields:
+          - { label: Size, name: size, widget: select, options: [{ label: "small", value: "10px" }, { label: "medium", value: "12px" }, { label: "big", value: "14px" }] }
+          - { label: Hue, name: hue, widget: select, options: [{ label: "red", value: "0" }, { label: "red-orange", value: "18" }, { label: "orange", value: "20" }, { label: "orange-yellow", value: "45" }, { label: "yellow", value: "60" }, { label: "yellow-green", value: "90" }, { label: "green", value: "120" }, { label: "green-blue", value: "180" }, { label: "blue", value: "240" }, { label: "blue-purple", value: "270" }, { label: "purple", value: "280" }, { label: "purple-red", value: "300" }] }
+          - { label: Saturation, name: saturation, widget: select, options: [{ label: "very saturated", value: "99%" }, { label: "saturated", value: "80%" }, { label: "medium", value: "50%" }, { label: "pale", value: "30%" }, { label: "very pale", value: "10%" }] }
+          - { label: Lightness, name: lightness, widget: select, options: [{ label: "very light", value: "80%" }, { label: "light", value: "65%" }, { label: "medium", value: "50%" }, { label: "dark", value: "35%" }, { label: "very dark", value: "20%" }] }
+          - { label: Color Scheme, name: color-scheme, widget: select, options: [{ label: "monochromatic", value: "0" }, { label: "analogous", value: "30" }, { label: "complementary", value: "180" }, { label: "triadic", value: "120" }] }
+          - { label: Max-width, name: max-width, widget: select, options: [{ label: "narrow", value: "40rem" }, { label: "medium", value: "50rem" }, { label: "large", value: "60rem" }, { label: "full", value: "100%" }] }
+          - { label: Spacing, name: spacing, widget: select, options: [{ label: "dense", value: ".1rem" }, { label: "medium", value: "1rem" }, { label: "sparse", value: "2rem" }] }
+          - { label: Text font size, name: text-font-size, widget: select, options: [{ label: "small", value: "clamp(0.625rem, 0.693vw + 0.446rem, 1rem)" }, { label: "medium", value: "clamp(1rem, 0.924vw + 0.511rem, 1.25rem)" }, { label: "big", value: "clamp(1.313rem, 1.178vw + 1.008rem, 1.95rem)" }] }

@@ -1,0 +1,23 @@
+{
+  "name": "css",
+  "version": "1.0.0",
+  "description": "CSS stylesheets with Eleventy, Liquid & DecapCMS",
+  "main": "eleventy.config.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "decap": "npx decap-server & npx @11ty/eleventy --serve",
+    "build": "eleventy",
+    "build-gp": "eleventy --pathprefix 'css'"
+  },
+  "keywords": [
+    "eleventy",
+    "liquid",
+    "decap",
+    "github-pages"
+  ],
+  "author": "Michel Maillard",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

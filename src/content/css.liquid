@@ -1,0 +1,41 @@
+---
+permalink: assets/css/style.css
+---
+/**************************************************
+Classless CSS stylesheet v1.0, Michel Maillard 
+**************************************************/
+
+/*************/
+/* Variables */
+/*************/
+
+:root {
+  --size: {{ tokens.size }};
+  --text-font-size: {{ tokens.text-font-size }};
+  --hue: {{ tokens.hue }};
+  --saturation: {{ tokens.saturation }};
+  --lightness: {{ tokens.lightness }};
+  --primary-color: hsl(var(--hue), var(--saturation),var(--lightness));
+  --color-scheme: {{ tokens.color-scheme }};
+  --secondary-hue: calc(var(--hue) + var(--color-scheme));
+  --secondary-lightness: calc(var(--lightness) + 20%);
+  --secondary-color: hsl(var(--secondary-hue), var(--saturation), var(--secondary-lightness));
+  --max-width: {{ tokens.max-width }};
+  --spacing: {{ tokens.spacing }};
+  --grey100: #f8f9fa;
+  --grey200: #e9ecef;
+  --grey300: #dee2e6;
+  --grey400: #ced4da;
+  --grey500: #adb5bd;
+  --grey600: #868e96;
+  --grey700: #495057;
+  --grey800: #343a40;
+  --grey900: #212529;
+}
+
+{% include "css/reset.css" %}
+{% include "css/base.css" %}
+{% include "css/flex.css" %}
+{% include "css/space.css" %}
+{% include "css/colors.css" %}
+{% include "css/navigation.css" %}
